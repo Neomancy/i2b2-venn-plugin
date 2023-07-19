@@ -93,7 +93,7 @@ window.addEventListener("I2B2_READY", ()=> { //anything we need initialized on p
                     if (i2b2.model.metadata[d[0]].renderData) {
                         label = i2b2.model.metadata[d[0]].renderData.title.replace("Patient Set for ","").replaceAll('"','');
                     } else {
-                        label = i2b2.model.metadata[d[0]].origData.title.replace("Patient Set for ","").replaceAll('"','');
+                        label = i2b2.model.metadata[d[0]].origData.title.replace("Patient Set for ","").replaceAll('"','').replace('- FINISHED','');
                     }
                     ret.label = label.split("@")[0].trim();
                 }
