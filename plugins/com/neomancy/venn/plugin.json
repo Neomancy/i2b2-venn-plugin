@@ -1,0 +1,11 @@
+{
+  "title": "Patientset Venn Diagram",
+  "description": "This is a plugin that displays a Venn diagram showing patient set population overlaps",
+  "category": [],
+  "icons": { "size32x32": "venn-icon.png" },
+  "assetDir": "assets",
+  "plugin_version" : "1.0",
+  "i2b2_version" : "1.8",
+  "base": "index.html",
+  "sandbox": true
+}

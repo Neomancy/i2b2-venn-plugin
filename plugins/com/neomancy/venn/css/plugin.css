@@ -1,0 +1,74 @@
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+
+.intro {
+    text-align: center;
+}
+
+.venn-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 0.5rem;
+}
+
+.venntooltip {
+    position: absolute;
+    text-align: center;
+    background: #333;
+    color: #ddd;
+    padding: 0.1rem 0.5rem;
+    border: 0px;
+    border-radius: 8px;
+    opacity: 0;
+    font-weight: bold;
+}
+.venntooltip span {
+    text-wrap: nowrap;
+    font-style: italic;
+    font-weight: normal;
+}
+
+#venn {
+    text-align: center;
+}
+
+#venn text {
+    cursor: default;
+}
+
+#venn .venn-area path {
+    stroke: #FFFFFF;
+    stroke-opacity: 0;
+    stroke-width: 2px;
+    transition: stroke 600ms ease-in-out;
+}
+
+#venn .venn-area.selected path {
+    stroke: #00000030;
+    stroke-opacity: 1 !important;
+}
+
+.prsListArea {
+    display: none;
+}
+
+#prsList div::before {
+    content: "[\00d7] ";
+    cursor: pointer;
+    pointer-events: all;
+}
+
+#prsList div {
+    cursor: default;
+    display: inline-block;
+    margin: 0 0.4rem;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+
+body.i2b2DropTarget.dragging {
+    background: #19875430;
+}
