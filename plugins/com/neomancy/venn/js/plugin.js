@@ -36,7 +36,7 @@ window.addEventListener("I2B2_READY", ()=> { //anything we need initialized on p
                         </patient_list>
                     </input_list>
                     <filter_list/>
-                    <output_option><patient_set select="using_input_list" onlykeys="false"/></output_option>`
+                    <output_option><patient_set select="using_input_list" onlykeys="true"/></output_option>`
             }).then((data) => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(data, "text/xml");
@@ -170,7 +170,7 @@ window.addEventListener("I2B2_READY", ()=> { //anything we need initialized on p
                         emphasizeSet(d.sets[0]);
                     } else if (d.sets.length === 2) {
                         // overlap is selected
-                        let targets = i2b2.model.renderData.filter((i) => (i.sets.length == 1 && (i.sets.includes(d.sets[0]) || i.sets.includes(d.sets[1]))) );
+                        let targets = i2b2.model.renderData.filter((i) => (i.sets.length === 1 && (i.sets.includes(d.sets[0]) || i.sets.includes(d.sets[1]))) );
                         targets.sort((a,b) => {
                             if (b.size > a.size) {
                                 return -1;
@@ -191,14 +191,14 @@ window.addEventListener("I2B2_READY", ()=> { //anything we need initialized on p
 
                     // Display a tooltip with the current size
                     tooltip.transition().duration(400).style("opacity", .9);
-                    let parents = i2b2.model.renderData.filter((i) => (i.sets.length == 1 && d.sets.includes(i.sets[0])));
+                    let parents = i2b2.model.renderData.filter((i) => (i.sets.length === 1 && d.sets.includes(i.sets[0])));
                     let labelParents = parents.map(d=>"<span>"+d.label+"</span>").join(" &cup; ");
                     tooltip.html(labelParents + "<br>" + d.size.toLocaleString() + " patients");
 
                     // highlight the current path
                     var selection = d3.select(this).transition("tooltip").duration(400);
                     selection.select("path")
-                        .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
+                        .style("fill-opacity", d.sets.length === 1 ? .4 : .1)
                         .style("stroke-opacity", 1);
                 })
 
@@ -211,14 +211,13 @@ window.addEventListener("I2B2_READY", ()=> { //anything we need initialized on p
                     tooltip.transition().duration(400).style("opacity", 0);
                     var selection = d3.select(this).transition("tooltip").duration(400);
                     selection.select("path")
-                        .style("fill-opacity", d.sets.length == 1 ? .25 : .0)
+                        .style("fill-opacity", d.sets.length === 1 ? .25 : .0)
                         .style("stroke-opacity", 0);
                 });
         };
 
-        let tooltip = d3.select("body").append("div")
+        app.tooltip = d3.select("body").append("div")
             .attr("class", "venntooltip");
-        app.tooltip = tooltip;
 
         div.selectAll("path")
             .style("stroke-opacity", 0)
